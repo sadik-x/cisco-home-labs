@@ -1,48 +1,68 @@
-Lab: DHCP Server for Multiple VLANs with Router and Multilayer Switch
-Objective
-Configure a network with multiple VLANs using a multilayer switch and a router that acts as the DHCP server. Enable inter-VLAN routing and DHCP services so that devices in different VLANs obtain IP addresses and communicate across VLANs.
+# Lab : Router as DHCP Server for Multiple VLANs with Multilayer Switch
 
-Topology Overview
-1 Router acting as DHCP server and inter-VLAN router
+# Objective
+Configure a router to act as a centralized DHCP server for multiple VLANs across a network with a multilayer switch and normal switches. Enable inter-VLAN routing and DHCP Relay to dynamically assign IP addresses in the correct subnet for each VLAN.
 
-1 Multilayer Switch performing VLAN segmentation and routing (SVIs)
+---
 
-3 Normal Switches connected to the multilayer switch, each assigned to a VLAN
+# Topology Overview
+- **1 Router** (DHCP server + default gateway)
 
-VLANs:
+- **1 Multilayer Switch** (Layer 3 routing + VLAN segmentation)
 
-VLAN 11 (IT)
+- **3 Normal Switches**
 
-VLAN 22 (Sales)
+**Multiple PCs** in different VLANs:
 
-VLAN 33 (Support)
+- VLAN 11 – IT
 
-PCs connected on normal switches, assigned to corresponding VLAN access ports
+- VLAN 22 – Sales
 
-Configured Features
-VLAN creation on multilayer and normal switches
+- VLAN 33 – Support
 
-Trunk ports between multilayer switch and normal switches
+---
 
-Layer 3 VLAN interfaces (SVIs) configured on multilayer switch for routing
+# Configured Features
+- VLAN creation on multilayer switch and normal switches
 
-Router configured as DHCP server with separate DHCP pools for each VLAN subnet
+- Trunk ports connecting multilayer switch and normal switches
 
-DHCP relay (ip helper-address) configured on multilayer switch VLAN interfaces pointing to router's DHCP server IP
+- Layer 3 VLAN interfaces (SVIs) on multilayer switch for routing
 
-Inter-VLAN routing enabled for communication between VLANs
+- Router configured as DHCP server with pools for each VLAN subnet:
 
-DHCP IP assignment and inter-VLAN connectivity verified via ping
+    -`192.168.11.0/24` for VLAN 11
 
-Technologies Used
-VLAN segmentation
+    -`192.168.22.0/24 `for VLAN 22
 
-802.1Q trunking
+    -`192.168.33.0/24` for VLAN 33
 
-Layer 3 Switch VLAN Interfaces (SVIs)
+- ip helper-address configured on multilayer switch SVIs pointing to router’s DHCP server IP
 
-Router acting as DHCP server
+- PCs obtaining IP addresses dynamically from router DHCP pools
 
-DHCP relay configuration
+---  
 
-Cisco IOS CLI
+# Technologies Used
+- VLANs
+
+- 802.1Q Trunking
+
+- Layer 3 Switch VLAN Interfaces (SVIs)
+
+- DHCP Server (on Router)
+
+- DHCP Relay (ip helper-address)
+
+- Cisco IOS CLI
+
+---
+
+# Results
+-PCs in each VLAN successfully received IP addresses from router DHCP server.
+
+-Inter-VLAN routing enabled seamless communication between VLANs.
+
+-DHCP relay forwarded DHCP requests from VLANs to the router server correctly.
+
+-Trunk links passed VLAN tagged traffic as expected.
