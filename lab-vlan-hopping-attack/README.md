@@ -1,4 +1,4 @@
-# Lab: VLAN Hopping Attack & Preventio
+# Lab: VLAN Hopping Attack & Prevention
 
 # Objective
 Simulate a VLAN Hopping attack using double-tagging, demonstrate its impact on a multi-VLAN network, and implement security best practices to prevent it.
