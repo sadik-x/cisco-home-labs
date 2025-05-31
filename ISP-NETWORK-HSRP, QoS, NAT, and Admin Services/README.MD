@@ -14,32 +14,32 @@ Simulate a realistic Internet Service Provider (ISP) network that delivers inter
 -Simulated Internet using a separate router and PC (8.8.8.8)
 
 
-# Configured Features
--- Routing & Redundancy
+##Configured Features
+# Routing & Redundancy
 -Static routes from ISP to customer networks
 
 -HSRP on core routers with 192.168.100.1 as virtual gateway
 
 -Failover tested successfully between ISP-R1 and ISP-R2
 
--- NAT & ACLs
+# NAT & ACLs
 -NAT enabled for home networks to access internet
 
 -ACL blocks Guest network (Home3) from accessing Admin Zone
 
--- VLANs & DHCP
+# VLANs & DHCP
 -Each home router has its own subnet and DHCP pool
 
 -Admin devices use static IPs in 192.168.100.0/24
 
--- QoS (Traffic Shaping)
+# QoS (Traffic Shaping)
 -Bandwidth shaping applied using Class-Map + Policy-Map
 
 -Example: Home1 capped at 800 Kbps
 
 -Simulates STANDART,PREMIUM and ULTRA internet packages
 
--- Monitoring & Access
+# Monitoring & Access
 -Syslog Server receives logs from ISP routers
 
 -SNMP configuration ready for monitoring(limited because of cisco packet tracer)
